@@ -38,6 +38,7 @@ gem 'active_link_to'
 
 #simple form gem
 gem 'simple_form'
+gem 'country_select'
 
 #images for carrierwave
 gem 'carrierwave', '~> 1.0'
@@ -47,6 +48,8 @@ gem "fog-aws"
 #active admin- because there's no user system, needs Devise gem
 gem 'devise'
 gem 'activeadmin'
+
+gem 'stripe'
 
 
 # Reduces boot times through caching; required in config/boot.rb
