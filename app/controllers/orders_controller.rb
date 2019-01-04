@@ -16,6 +16,10 @@ def create
   if @order.save_and_charge
     reset_session
     flash[:success] = "Order Completed"
+
+    OrderMailer.receipt(@order).deliver_now
+
+
     redirect_to order_path(@order)
     #this goes to show page aka the thank you page
   else

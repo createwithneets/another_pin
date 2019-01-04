@@ -41,6 +41,14 @@ else
   false
 end
 
+rescue Stripe::CardError => e
+  #this is from stripe
+  @message = e.json_body[:error][:message]
+#add to the model errors
+  self.errors.add(:stripe_token, @message)
+#return false to our controller
+  false
+
   end
 
 
@@ -51,6 +59,18 @@ end
     order_items.each do |item|
       @total= @total + item.product.price * item.quantity
     end
+
+    @total
+  end
+
+
+
+  def total_price_in_dollars
+    @total= 0
+      order_items.all.each do |item|
+  @total= @total + item.product.price_in_dollars * item.quantity
+
+      end
 
     @total
   end
